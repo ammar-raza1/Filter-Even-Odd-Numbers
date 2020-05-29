@@ -3,7 +3,6 @@ package com.tenpearls.filteringevenodd.service.impl;
 import com.tenpearls.filteringevenodd.Utils.BaseUtil;
 import com.tenpearls.filteringevenodd.service.Sort;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SortImpl implements Sort {
@@ -15,18 +14,28 @@ public class SortImpl implements Sort {
         if (list == null || list.isEmpty()) return null;
 
         list.remove(Integer.valueOf(0));    // Remove Zero from list if exist
-
-        List<Integer> oddNumberList = new ArrayList<>();
-        List<Integer> evenNumberList     = new ArrayList<>();
-
-        for (Integer anInteger : list) {
-            if (BaseUtil.checkIfEven(anInteger)) {
-                evenNumberList.add(anInteger);
-            } else {
-                oddNumberList.add(anInteger);
+        int countEven = 0;
+        int length = list.size();
+        for (int i = 0; i < length; i++) {
+            if (BaseUtil.checkIfOdd(list.get(i))) {
+                countEven++;
             }
         }
-        oddNumberList.addAll(evenNumberList);
-        return oddNumberList;
+        int i = 0;
+        int j = i + 1;
+        while (i != countEven) {
+            if (BaseUtil.checkIfOdd(list.get(i))) {
+                i++;
+                j = i + 1;
+            } else if (BaseUtil.checkIfEven(list.get(i)) && j < length) {
+                int temp = list.get(i);
+                list.set(i, list.get(j));
+                list.set(j, temp);
+                j++;
+            }
+        }
+
+
+        return list;
     }
 }
