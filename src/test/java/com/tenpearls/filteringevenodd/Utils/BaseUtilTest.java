@@ -24,6 +24,17 @@ public class BaseUtilTest extends FilteringevenoddApplicationTests {
     public void checkIfEvenFalseTests() {
 
         Assert.assertFalse(BaseUtil.checkIfEven(1));
+    }    @Test
+
+    public void checkIfOddTrueTests() {
+
+        Assert.assertTrue(BaseUtil.checkIfOdd(1));
+    }
+
+    @Test
+    public void checkIfOddFalseTests() {
+
+        Assert.assertFalse(BaseUtil.checkIfOdd(4));
     }
 
 }
