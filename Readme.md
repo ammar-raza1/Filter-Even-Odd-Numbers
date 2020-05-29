@@ -4,7 +4,3 @@ Write a function to sort a list of numbers so that odd numbers are sorted before
 
 **Run project:**
 $ mvn spring-boot:run
-
-
-**Run Sort unit tests:**
-$ mvn test
